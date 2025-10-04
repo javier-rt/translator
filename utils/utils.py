@@ -41,6 +41,5 @@ def calling(text, in_lang, out_lang):
     str
         Translated text.
     """
-    translation = model.translate(text, in_lang="en", out_lang="es")
 
-    return translation
+    return model.translate(text, in_lang="en", out_lang="es")
