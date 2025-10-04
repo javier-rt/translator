@@ -1,3 +1,6 @@
+# Hugging Face Token
+HF_TOKEN.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
