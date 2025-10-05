@@ -2,7 +2,6 @@ import model
 from languages import LANGUAGES as lang
 
 
-
 def ab_language(language_name: str) -> str:
     """
     Get abbreviation of a language name.
@@ -41,5 +40,4 @@ def calling(text, in_lang, out_lang):
     str
         Translated text.
     """
-
     return model.translate(text, in_lang="en", out_lang="es")
