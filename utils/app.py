@@ -1,8 +1,7 @@
 import streamlit as st
 import time
-
-import utils as utils
 import model
+import utils as utils
 
 from languages import LANGUAGES as lang
 
@@ -19,13 +18,10 @@ def initialize():
     if "translate_area" not in st.session_state:
         st.session_state.translate_area = " "
 
-# Initialize session state at the start
 initialize()
-
 
 def update_steps(num = 1):
     st.session_state.step = num
-
 
 with st.container(border=True):
     col1, col2 = st.columns([1, 1])
@@ -61,13 +57,13 @@ with st.container(border=True):
             with st.container(border=False):
                 st.write("")
 
+            original_text = st.session_state.original_text
+            ab_source = utils.ab_language(st.session_state.lang_source)
+            ab_target = utils.ab_language(st.session_state.lang_target)
+
             start_time = time.perf_counter()
             
             try:
-                original_text = st.session_state.original_text
-                ab_source = utils.ab_language(st.session_state.lang_source)
-                ab_target = utils.ab_language(st.session_state.lang_target)
-
                 st.session_state.translation = model.translate(original_text, ab_source, ab_target)
 
             except Exception as e:
@@ -87,19 +83,7 @@ with st.container(border=True):
             st.write(f"Translated text - Time spent translating: {st.session_state.time}s")
             with st.container(border=False):
                 st.write(st.session_state.translation)
-                translation = st.session_state.translation
-
-                # if st.button("Copy to clipboard"):
-                    # st.markdown(f"""
-                    #     <textarea id="copy_text" style="display:none">{translation}</textarea>
-                    #     <button onclick="navigator.clipboard.writeText(document.getElementById('copy_text').value)">
-                    #         Copy to clipboard
-                    #     </button>
-                    #     """, unsafe_allow_html=True)
-
-
 
 if st.button("Translate"):
     update_steps(2)
-    
     st.rerun()
