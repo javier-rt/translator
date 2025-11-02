@@ -1,13 +1,14 @@
-# Translator 🌍
+# Translator
 
-A simple but powerful translation app built with **Streamlit** and the **Hugging Face Inference API**.
-It uses [Helsinki-NLP](https://huggingface.co/Helsinki-NLP) machine translation models (`opus-mt`) to translate text between many different languages.
+A simple but powerful translation app built with **Streamlit** and the **Hugging Face Inference API**.  
+It uses [Helsinki-NLP](https://huggingface.co/Helsinki-NLP) machine translation models (`opus-mt`) to translate text between multiple languages, and automatically detects the input language using [Papluca](https://huggingface.co/papluca/xlm-roberta-base-language-detection).
 
 ---
 
-## 🚀 Features
+## Features
 
 * Translate text between 30+ languages.
+* Automatic language detection.
 * Lightweight & fast: Uses Hugging Face Inference API, no local model downloads needed.
 * Fast and easy-to-use Streamlit web app.
 * Automatically measures translation time.
@@ -15,7 +16,7 @@ It uses [Helsinki-NLP](https://huggingface.co/Helsinki-NLP) machine translation 
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 translator/
@@ -27,13 +28,13 @@ translator/
 │── utils/
     │── app.py          # Streamlit UI
     │── languages.py    # Supported languages and abbreviations
-    │── model.py        # Translation logic using Hugging Face API
+    │── model.py        # Translation logic + language detection using Hugging Face API
     │── utils.py        # Helper functions
 ```
 
 ---
 
-## ⚙️ Requirements
+## Requirements
 
 * Python 3.9+ recommended
 * [Streamlit](https://streamlit.io/)
@@ -59,7 +60,7 @@ This project requires a personal Hugging Face API token.
 
 ---
 
-## ▶️ Run the App
+##  Run the App
 
 Simply run:
 
@@ -71,11 +72,17 @@ This will launch Streamlit and open the app in your browser.
 
 ---
 
-## 🌐 How It Works
+## How It Works
 
 1. You type in some text and pick the **source** and **target** languages.
-2. The app sends your text to Hugging Face Inference API, so no models are downloaded locally and it stays lightweight, even on computers with low memory.
-3. The app automatically builds the correct model name for the language pair, e.g.:
+2. If Auto detect language is selected, the app identifies the source language using the Hugging Face model:
+
+   ```
+   papluca/xlm-roberta-base-language-detection
+   ```
+
+3. The app sends your text to Hugging Face Inference API, so no models are downloaded locally and it stays lightweight, even on computers with low memory.
+4. The app automatically builds the correct model name for the language pair using the Hugging Face model:
 
    ```
    Helsinki-NLP/opus-mt-en-es
@@ -86,11 +93,13 @@ This will launch Streamlit and open the app in your browser.
 
 ---
 
-## 🗣️ Supported Languages
+## Supported Languages
 
-Some of the supported languages include:
-Arabic, Chinese, Dutch, English, French, German, Greek, Hindi, Italian, Japanese, Korean, Portuguese, Russian, Spanish, Turkish, Vietnamese, and many more.
-(See `utils/languages.py` for the full list).
+The app supports translation between the following languages:
+
+Arabic, Bulgarian, Chinese, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Latvian, Lithuanian, Norwegian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish, Vietnamese.
+
+You can also choose Auto detect language to let the model identify the source automatically.
 
 ---
 
@@ -101,8 +110,9 @@ See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙌 Acknowledgements
+## Acknowledgements
 
 * [Helsinki-NLP](https://huggingface.co/Helsinki-NLP) for the translation models.
+* [Papluca](https://huggingface.co/papluca/xlm-roberta-base-language-detection) for automatic language detection.
 * [Hugging Face](https://huggingface.co/) for hosting and providing the API.
 * [Streamlit](https://streamlit.io/) for making interactive apps super easy.
