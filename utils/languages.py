@@ -1,4 +1,5 @@
 LANGUAGES = {
+    "auto": "Auto detect language",
     "ar": "Arabic",
     "bg": "Bulgarian",
     "zh": "Chinese",
