@@ -48,7 +48,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🔑 Hugging Face Token
+## Hugging Face Token
 
 This project requires a personal Hugging Face API token.
 
@@ -103,7 +103,7 @@ You can also choose Auto detect language to let the model identify the source au
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the terms of the **GNU General Public License v3.0 (GPL-3.0)**.
 See the [LICENSE](LICENSE) file for details.
